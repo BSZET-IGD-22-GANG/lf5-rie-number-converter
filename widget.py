@@ -34,10 +34,9 @@ def check_str(string, base):
     out = ""
 
     for char in string:
-        if char != ' ' and char in characters:
-            out += char
-        else:
+        if char == ' ' or not char in characters:
             return None
+        out += char
 
     return out
 
