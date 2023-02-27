@@ -42,6 +42,7 @@ def check_str(string, base):
     return out
 
 class Widget(Base, Form):
+  
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
@@ -73,54 +74,50 @@ class Widget(Base, Form):
 
 
     ####### Change the input base #######
+    
+    def change_input_base(self, base, prefix):
+        self.in_base = 2
+        self.prefix = prefix
+        self.on_btnFormatieren_clicked()
 
     @Slot()
     def on_optBinE_clicked(self):
-        self.in_base = 2
-        self.prefix = "0b"
-        self.on_btnFormatieren_clicked()
+        self.change_input_base(2, "0b")
 
     @Slot()
     def on_optDezE_clicked(self):
-        self.in_base = 10
-        self.prefix = ""
-        self.on_btnFormatieren_clicked()
+        self.change_input_base(10, "")
 
     @Slot()
     def on_optHexE_clicked(self):
-        self.in_base = 16
-        self.prefix = "0x"
-        self.on_btnFormatieren_clicked()
+        self.change_input_base(16, "0x")
 
     @Slot()
     def on_optOctE_clicked(self):
-        self.in_base = 8
-        self.prefix = "0o"
-        self.on_btnFormatieren_clicked()
+        self.change_input_base(8, "0o")
 
 
     ####### Change the output base #######
+    
+    def change_output_base(self, base):
+        self.out_base = base
+        self.on_btnFormatieren_clicked()
 
     @Slot()
     def on_optBinA_clicked(self):
-        self.out_base = 2
-        self.on_btnFormatieren_clicked()
+        self.change_output_base(2)
 
     @Slot()
     def on_optDezA_clicked(self):
-        self.out_base = 10
-        self.on_btnFormatieren_clicked()
+        self.change_output_base(10)
 
     @Slot()
     def on_optHexA_clicked(self):
-        self.out_base = 16
-        self.on_btnFormatieren_clicked()
+        self.change_output_base(16)
 
     @Slot()
     def on_optOctA_clicked(self):
-        self.out_base = 8
-        self.on_btnFormatieren_clicked()
-
+        self.change_output_base(8)
 
 
 if __name__ == "__main__":
